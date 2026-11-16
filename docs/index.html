@@ -1,117 +1,21 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex,nofollow,noarchive">
-  <title>Impact Wolves | Claude Skills</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: system-ui, sans-serif;
-      background: #f6f8fb;
-      color: #172033;
-    }
-    header {
-      background: #111827;
-      color: white;
-      padding: 50px max(24px, calc((100% - 1000px)/2));
-    }
-    header p { color: #cbd5e1; }
-    main { max-width: 1000px; margin: 35px auto; padding: 0 24px; }
-    input {
-      width: 100%;
-      padding: 14px;
-      border: 1px solid #d1d5db;
-      border-radius: 9px;
-      font-size: 16px;
-      margin-bottom: 24px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-      gap: 18px;
-    }
-    .card {
-      background: white;
-      border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      padding: 24px;
-    }
-    .card p { color: #64748b; min-height: 55px; }
-    .download {
-      display: inline-block;
-      padding: 10px 14px;
-      background: #1d4ed8;
-      color: white;
-      text-decoration: none;
-      border-radius: 7px;
-    }
-  </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Impact Wolves | Claude Skills</title>
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#172033;background:#f5f7fb}*{box-sizing:border-box}body{margin:0}header{background:#101827;color:white;padding:56px max(24px,calc((100% - 1060px)/2))}header p{color:#cbd5e1;max-width:620px;line-height:1.6}.eyebrow{color:#93c5fd;font-size:13px;letter-spacing:.1em;text-transform:uppercase}h1{font-size:clamp(30px,5vw,48px);margin:12px 0}main{max-width:1060px;margin:36px auto;padding:0 24px}input{width:100%;padding:16px;border:1px solid #cbd5e1;border-radius:12px;font:inherit;outline-color:#2563eb}.meta{color:#64748b;font-size:14px;margin:20px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px}.card{background:white;border:1px solid #e2e8f0;border-radius:16px;padding:24px;box-shadow:0 4px 16px #10182708}.card h2{font-size:19px;margin:12px 0}.card p{color:#64748b;line-height:1.55;min-height:72px}.tag{font-size:12px;color:#1d4ed8;background:#eff6ff;padding:5px 9px;border-radius:20px}.download{display:inline-block;background:#1d4ed8;color:white;padding:11px 15px;border-radius:9px;text-decoration:none;font-weight:600}.download:hover{background:#1e40af}footer{text-align:center;color:#64748b;font-size:13px;padding:40px 16px}.empty{color:#64748b}
+</style>
 </head>
-<body>
-  <header>
-    <h1>Impact Wolves Skills Library</h1>
-    <p>Reusable skills for Claude and AI workflows.</p>
-  </header>
-
-  <main>
-    <input id="search" placeholder="Search skills...">
-    <div class="grid" id="catalog"></div>
-  </main>
-
-  <script>
-    const skills = [
-      {
-        name: "Amazon PPC Analysis",
-        description: "Analyze campaign and ASIN performance.",
-        file: "amazon-ppc-analysis.zip"
-      },
-      {
-        name: "Data Validation",
-        description: "Validate datasets and detect errors.",
-        file: "data-validation.zip"
-      },
-      {
-        name: "n8n Automation",
-        description: "Develop and troubleshoot n8n workflows.",
-        file: "n8n-automation.zip"
-      }
-    ];
-
-    const catalog = document.getElementById("catalog");
-    const search = document.getElementById("search");
-
-    function render(query = "") {
-      catalog.innerHTML = "";
-      skills
-        .filter(s => (s.name + " " + s.description)
-          .toLowerCase().includes(query.toLowerCase()))
-        .forEach(s => {
-          const card = document.createElement("article");
-          card.className = "card";
-
-          const title = document.createElement("h3");
-          title.textContent = s.name;
-
-          const desc = document.createElement("p");
-          desc.textContent = s.description;
-
-          const link = document.createElement("a");
-          link.className = "download";
-          link.href = "downloads/" + s.file;
-          link.textContent = "Download ZIP";
-          link.setAttribute("download", "");
-
-          card.append(title, desc, link);
-          catalog.appendChild(card);
-        });
-    }
-
-    search.addEventListener("input", () => render(search.value));
-    render();
-  </script>
-</body>
-</html>
+<body><header><div class="eyebrow">Impact Wolves / Claude</div><h1>Skills Library</h1><p>Reusable skills for analysis and automation. Search the catalog and download a skill ZIP to install in Claude.</p></header>
+<main><label for="search">Search skills</label><input id="search" type="search" placeholder="Search by name or description…" autocomplete="off"><div class="meta" id="count"></div><section class="grid" id="catalog" aria-label="Available skills"></section><p class="empty" id="empty" hidden>No matching skills found.</p></main><footer>Example skills catalog · Files are publicly accessible to anyone with the URL</footer>
+<script>
+const skills=[
+{name:'Amazon PPC Analysis',category:'Advertising',description:'Analyze campaign and ASIN-level performance, validate metrics, and identify evidence-backed follow-ups.',file:'amazon-ppc-analysis.zip'},
+{name:'Data Validation',category:'Analytics',description:'Check datasets for duplicates, missing values, inconsistent types, and ambiguous numeric formatting.',file:'data-validation.zip'},
+{name:'n8n Automation',category:'Automation',description:'Review workflow reliability, pagination, retries, expressions, and error handling.',file:'n8n-automation.zip'}
+];
+const catalog=document.querySelector('#catalog'),search=document.querySelector('#search'),count=document.querySelector('#count'),empty=document.querySelector('#empty');
+function render(){const q=search.value.trim().toLowerCase();const shown=skills.filter(s=>[s.name,s.category,s.description].join(' ').toLowerCase().includes(q));catalog.replaceChildren();shown.forEach(s=>{const article=document.createElement('article');article.className='card';const tag=document.createElement('span');tag.className='tag';tag.textContent=s.category;const title=document.createElement('h2');title.textContent=s.name;const desc=document.createElement('p');desc.textContent=s.description;const link=document.createElement('a');link.className='download';link.href='downloads/'+s.file;link.download=s.file;link.textContent='Download ZIP';article.append(tag,title,desc,link);catalog.append(article)});count.textContent=shown.length+' of '+skills.length+' skills';empty.hidden=shown.length!==0}search.addEventListener('input',render);render();
+</script></body></html>
